@@ -3,7 +3,7 @@ WAMP Server, MySql, Php.
 
 Project nay se duoc lam tren IDE Netbeans. Repo da duoc cap nhat lai giup moi nguoi co the open project nay tren netbeans.
 
-File Import Database se duoc cap nhat tai day: https://drive.google.com/open?id=1x2ZaxaXPx6Vfcw3cqpDf4vYaDM2s-685
+File Import Database se duoc cap nhat tai day: https://drive.google.com/open?id=1n3_Fa8Txho9L73VOJfYMz1iZkNX52uqp
 
 Khi da open duoc project nay tren netbeans, de set-up MySQL connection thi moi nguoi tim tab Services tren netbeans -> Databases -> New Connection -> Nhap thong tin database cua minh vao
 
