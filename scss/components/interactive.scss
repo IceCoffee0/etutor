@@ -1,0 +1,26 @@
+.interactive {
+    display: flex;
+}
+
+.interactive__like {
+    margin-left: 24px;
+    & i {
+        color: #999999;
+    }
+}
+
+
+.interactive__quanlity {
+    display: inline-block;
+    color: #666666;
+}
+
+.interactive__quanlity::before {
+    content: "(";
+    color: #666666;
+}
+
+.interactive__quanlity::after {
+    content: ")";
+    color: #666666;
+}
