@@ -55,7 +55,7 @@ function registerUser($fullname,$username, $password, $roleId, $email, $phone = 
     if (!$row) { //user doesn't exist
         //Add a default user
         $token = passwordToToken($password);
-        $query = "INSERT INTO users(fullname,username, password, role_id, email) VALUES('$fullname','$username', '$token', '$roleId', '$email', '$phone')";
+        $query = "INSERT INTO users(fullname,username, password, role_id, email, phone) VALUES('$fullname','$username', '$token', '$roleId', '$email', '$phone')";
         queryMysql($query);
         return 1; //added
     }else {
@@ -71,24 +71,32 @@ function checkUser($level) {
     }
 }
 
-function generateAndSendAccount($name, $email) {
+function generateAndSendAccount($name, $email, $role) {
     $username = generateRandomString($name, 8);
-    $password = generateRandomString($name, 12);
+    $password = passwordToToken(generateRandomString($name, 12));
     
-    $from = 'Ngo Manh Duy <duynmgch16457@fpt.edu.vn>';
-    $to = 'Emperor <' .  $email . '>';
-    $subject = 'Your Loggin Credential';
-    $message = "Username: " . $username . "\n" . "Passowrd: " . $password;
-    $headers = 'From: ' . $from;
+    $result = registerUser($name, $username, $password, $role, $email);
+    if($result) {
+        
+        $from = 'Ngo Manh Duy <duynmgch16457@fpt.edu.vn>';
+        $to = 'Emperor <' .  $email . '>';
+        $subject = 'Your Loggin Credential';
+        $message = "Username: " . $username . "\n" . "Passowrd: " . $password;
+        $headers = 'From: ' . $from;
 
-    if (!mail($to, $subject, $message, $headers))
-    {
-        echo "Error.";
+        if (!mail($to, $subject, $message, $headers))
+        {
+            echo "Error.";
+        }
+        else
+        {
+            echo "Email sent.";
+        }
+        
+    } else {
+        echo $result;
     }
-    else
-    {
-        echo "Message sent.";
-    }
+    
 }
 
 function generateRandomString($name, $n) {

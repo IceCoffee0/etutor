@@ -6,7 +6,7 @@ if(isset($_POST['fullname'])) {
     $email = sanitizeString($_POST['email']);
     $role = sanitizeString($_POST['role']);
     
-    generateAndSendAccount($fullname, $email);
+    generateAndSendAccount($fullname, $email, $role);
 }
 
 ?>
