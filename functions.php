@@ -91,6 +91,7 @@ function generateAndSendAccount($name, $email, $role) {
         else
         {
             echo "Email sent.";
+            header("Location: login_test.php");
         }
         
     } else {
