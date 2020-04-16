@@ -18,6 +18,7 @@
                 {
                     // provide script for display html error for failed to log in
                     echo "<script>console.log('Log In Failed, Wrong username or password');</script>";
+                    header("Location: login_test.php");
                 } else
                 {
                     session_start ();
