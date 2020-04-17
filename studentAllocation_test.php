@@ -5,9 +5,6 @@
 ?>
 
 <head>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
@@ -44,24 +41,27 @@
                       ?>
                     </select>
                 </div>
-              </div>
-            
-            <div>
-                <ul style="list-style: none;">
+            </div>
+           
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Students
+                </button>
+                <div class="dropdown-menu col-md-12" aria-labelledby="dropdownMenuButton">
                     <?php 
                     $students = getUnAllocatedStudents();
                     foreach($students as $student) {
                         ?>
-                            <li>
-                                <input id="<?= $student['user_id'] ?>"  type="checkbox" name="student[]" value="<?= $student['user_id'] ?>">
-                                <label> <?= $student['fullname'] ?> </label> <br>
-                            </li>
+                            <a class="dropdown-item" href="javascript:void(0)" style="cursor: default;" data-value="<?= $student['user_id'] ?>" tabIndex="-1"> 
+                                <input id=" <?= $student['user_id'] ?> "type="checkbox" name="student[]" value="<?= $student['user_id'] ?>"> 
+                                <label for="<?= $student['user_id'] ?>"> <?= $student['fullname'] ?> </label> 
+                            </a>
                         <?php
                         }
                     ?>
-               </ul>
+                </div>
             </div>
-
+            
         </div>
         <div class="modal-footer">
             <input type="submit" name="allocate" value="Save" class="btn btn-secondary">
@@ -71,3 +71,32 @@
   </div>
 </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+    var options = [];
+    var total=$(this).find('input[name="student[]"]:checked').length;
+
+    $( '.dropdown-menu a' ).on( 'click', function( event ) {
+
+       var $target = $( event.currentTarget ),
+           val = $target.attr( 'data-value' ),
+           $inp = $target.find( 'input' ),
+           idx;
+
+       if ( ( idx = options.indexOf( val ) ) > -1 ) {
+          options.splice( idx, 1 );
+          setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
+       } else {
+          options.push( val );
+          setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+       }
+
+       $( event.target ).blur();
+
+       console.log( options );
+       return false;
+    });
+</script>
