@@ -136,4 +136,14 @@ function getUnAllocatedStudents() {
     return $students;
 }
 
+function findEmails($ids) {
+    $query = "SELECT email FROM users WHERE user_id in ('$ids')";
+    $result = queryMysql($query);
+    $emails = array();
+    while ($row = $result->fetch_assoc()) {
+        array_push($emails, $row['email']);
+    }
+    return $emails;
+}
+
 ?>

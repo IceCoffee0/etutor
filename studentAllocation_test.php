@@ -58,13 +58,16 @@
                             </a>
                         <?php
                         }
+                    if(count($students) <= 0) {
+                        echo "<p>No available students</p>";
+                    }
                     ?>
                 </div>
             </div>
             
         </div>
         <div class="modal-footer">
-            <input type="submit" name="allocate" value="Save" class="btn btn-secondary">
+            <input type="submit" name="allocate" value="Save" class="btn btn-primary">
         </div>
       </form>    
     </div>
