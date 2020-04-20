@@ -111,7 +111,7 @@ function allocateStudent($teacherId, $studentIds, $reAllocation = false, $teache
             $from = 'Ngo Manh Duy <duynmgch16457@fpt.edu.vn>';
             $to = '<' .  $teacherMail . '>';
             $subject = 'New student allocated';
-            $message = "The student(s) with the following ID have been allocated to you: " . getUserFullNameAndId($studentIds);
+            $message = "The student(s) with the following ID have been allocated to you: " . implode(",",getUserFullNameAndId($studentIds));
             $headers = 'From: ' . $from;
             mail($to, $subject, $message, $headers);
             
@@ -119,7 +119,7 @@ function allocateStudent($teacherId, $studentIds, $reAllocation = false, $teache
             $from = 'Ngo Manh Duy <duynmgch16457@fpt.edu.vn>';
             $to = '' . $studentMail;
             $subject = 'You have been allocated to a new teacher';
-            $message = "You have been allocated to a new teacher with the following ID" . getUserFullNameAndId($teacherId);
+            $message = "You have been allocated to a new teacher with the following ID: " . implode(",",getUserFullNameAndId($teacherId));
             $headers = 'From: ' . $from;
             mail($to, $subject, $message, $headers);
         }
