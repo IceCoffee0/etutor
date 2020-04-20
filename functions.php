@@ -64,10 +64,9 @@ function registerUser($fullname,$username, $password, $roleId, $email, $phone = 
 }
 
 function checkUser($level) {
-    $role = $_SESSION['role'];
-    if(!isset($_SESSION['role']) || $_SESSION['role'] != $level) {
+    if(!isset($_SESSION['role']) || $_SESSION['role'] < $level) {
         echo "<script>alert('Restricted Area');</script>";
-        header("Location: login.php");
+        header("Location: login_test.php");
     }
 }
 
@@ -79,7 +78,7 @@ function generateAndSendAccount($name, $email, $role) {
     if($result) {
         
         $from = 'Ngo Manh Duy <duynmgch16457@fpt.edu.vn>';
-        $to = 'Emperor <' .  $email . '>';
+        $to = '<' .  $email . '>';
         $subject = 'Your Loggin Credential';
         $message = "Username: " . $username . "\n" . "Passowrd: " . $password;
         $headers = 'From: ' . $from;
@@ -111,6 +110,49 @@ function generateRandomString($name, $n) {
     } 
   
     return $randomString; 
+}
+
+function getuserList($user) {
+    $query = "SELECT * FROM users INNER JOIN role ON `users`.`role_id` = `role`.`role_id` WHERE `role`.`role_name` = '$user' ";
+    return queryMysql($query);
+}
+
+function getUnAllocatedStudents() {
+    $query = "SELECT allocated_students FROM allocation";
+    $result = queryMysql($query);
+    $list = array();
+    while($row = $result->fetch_assoc()) {
+        $list = array_merge($list, explode(",", $row['allocated_students']));
+    }
+    $query2 = "SELECT user_id, fullname FROM users WHERE role_id = 2";
+    $result2 = queryMysql($query2);
+    $students = array();
+    while ($row = $result2->fetch_assoc()) {
+        if(!in_array($row['user_id'], $list)) {
+            array_push($students, $row);
+        }
+    }
+    return $students;
+}
+
+function findEmails($ids) {
+    $query = "SELECT email FROM users WHERE user_id in ('$ids')";
+    $result = queryMysql($query);
+    $emails = array();
+    while ($row = $result->fetch_assoc()) {
+        array_push($emails, $row['email']);
+    }
+    return $emails;
+}
+
+function getUserFullNameAndId($ids) {
+    $query = "SELECT user_id,fullname FROM users WHERE user_id in ('$ids')";
+    $result = queryMysql($query);
+    $users = array();
+    while ($row = $result->fetch_assoc()) {
+        array_push($users, $row['fullname']. ' - ' .$row['user_id']);
+    }
+    return $users;
 }
 
 ?>

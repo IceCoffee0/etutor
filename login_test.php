@@ -1,4 +1,10 @@
-<?php require 'functions.php';?>
+<?php 
+require 'functions.php';
+session_start();
+if(isset($_SESSION['username'])) {
+    header("Location: index.php");
+}
+?>
 
 <html>
     <div>
