@@ -65,8 +65,9 @@ function registerUser($fullname,$username, $password, $roleId, $email, $phone = 
 
 function checkUser($level) {
     if(!isset($_SESSION['role']) || $_SESSION['role'] < $level) {
-        echo "<script>alert('Restricted Area');</script>";
-        header("Location: login_test.php");
+        header('Refresh: 2; URL=index.php');
+        echo "<script>alert('Restricted Area')</script>";
+        echo "Redirecting ...";
     }
 }
 
