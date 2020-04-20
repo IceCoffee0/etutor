@@ -64,8 +64,7 @@ function registerUser($fullname,$username, $password, $roleId, $email, $phone = 
 }
 
 function checkUser($level) {
-    $level = $_SESSION['role'];
-    if(!isset($_SESSION['role']) || $_SESSION['role'] != $level) {
+    if(!isset($_SESSION['role']) || $_SESSION['role'] < $level) {
         echo "<script>alert('Restricted Area');</script>";
         header("Location: login_test.php");
     }
@@ -144,6 +143,16 @@ function findEmails($ids) {
         array_push($emails, $row['email']);
     }
     return $emails;
+}
+
+function getUserFullNameAndId($ids) {
+    $query = "SELECT user_id,fullname FROM users WHERE user_id in ('$ids')";
+    $result = queryMysql($query);
+    $users = array();
+    while ($row = $result->fetch_assoc()) {
+        array_push($users, $row['fullname']. ' - ' .$row['user_id']);
+    }
+    return $users;
 }
 
 ?>
