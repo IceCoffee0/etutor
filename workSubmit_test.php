@@ -1,11 +1,8 @@
 <?php
 require './functions.php';
 session_start();
-if($_SESSION['role'] != 2) {
-//    header('Refresh: 3; URL=studentAllocation_test.php');
-//    echo "<script>alert('Only student can perform this action')</script>";
-//    echo "Redirecting ...";
-}
+checkUser(1);
+echo $_SESSION['uid'];
 ?>
 <html>
 <head>
@@ -19,31 +16,75 @@ if($_SESSION['role'] != 2) {
 </head>
 
 <body>
-    <form action="workSubmit_func.php" method="post" enctype="multipart/form-data" id="uploadForm">
-        <input type="hidden" name="sender" value="<?= $_SESSION['uid']?>">
-        
-                <?php 
-                    $query = "SELECT * FROM allocation";
-                    $result = queryMysql($query);
-                    while($row = $result->fetch_assoc()) {
-                        $teacher = $row['tutor_id'];
-                        $students = explode(",", $row['allocated_students']);
-                        if(in_array($_SESSION['uid'], $students)) {
-                            ?>
-        <input type="hidden" name="receiver" value="<?= $teacher ?>">
-                            <?php
-                        }
-                    }
-                ?>
-                                                             
-        
-        Title<br>
-        <input type="text" name="title" required> <br>
-        File
-        <input type="file" name="fileUpload" value=""> <br>
-        Description
-        <textarea name="description" form="uploadForm" placeholder="Enter description ..."></textarea>
-        <input type="submit" name="upload" value="Send">
-    </form>
+    <?php 
+        if($_SESSION['role'] == 2) {
+        ?>
+            <form action="workSubmit_func.php" method="post" enctype="multipart/form-data" id="uploadForm">
+                <input type="hidden" name="sender" value="<?= $_SESSION['uid']?>">
+
+                        <?php 
+                            $query = "SELECT * FROM allocation";
+                            $result = queryMysql($query);
+                            while($row = $result->fetch_assoc()) {
+                                $teacher = $row['tutor_id'];
+                                $students = explode(",", $row['allocated_students']);
+                                if(in_array($_SESSION['uid'], $students)) {
+                                    ?>
+                                    <input type="hidden" name="receiver" value="<?= $teacher ?>">
+                                    <?php
+                                }
+                            }
+                        ?>
+
+
+                Title<br>
+                <input type="text" name="title" required> <br>
+                File
+                <input type="file" name="fileUpload" value=""> <br>
+                Description
+                <textarea name="description" form="uploadForm" placeholder="Enter description ..."></textarea>
+                <input type="submit" name="upload" value="Send">
+            </form>
+        <?php
+        }
+        if($_SESSION['role'] == 1) {
+            ?>
+            <form action="workSubmit_func.php" method="post" enctype="multipart/form-data" id="uploadForm">
+                <input type="hidden" name="sender" value="<?= $_SESSION['uid']?>">
+
+                        <div class="studentSelect col-md-4">
+                            <div class="form-group">
+                                <label for="teacherSelect">Send file to student</label>
+                                <select class="form-control" id="teacherSelect" name="receiver">
+                                    <?php
+                                        $tutorId = $_SESSION['uid'];
+                                        $query1 = "SELECT allocated_students FROM allocation WHERE tutor_id = '$tutorId'";
+                                        $result1 = queryMysql($query1);
+                                        $students = $result1->fetch_array()[0];
+                                        $query2 = "SELECT * FROM users WHERE user_id IN ($students)";
+                                        $result2 = queryMysql($query2);
+                                        while($row = $result2->fetch_assoc()) {
+                                        ?>
+                                        <option value="<?= $row['user_id']?>"> <?= $row['fullname']?> </option>
+                                        <?php
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+                Title<br>
+                <input type="text" name="title" required> <br>
+                File
+                <input type="file" name="fileUpload" value=""> <br>
+                Description
+                <textarea name="description" form="uploadForm" placeholder="Enter description ..."></textarea>
+                <input type="submit" name="upload" value="Send">
+            </form>
+            <?php
+        }
+    ?>
+    
+    
 </body>
 </html>
