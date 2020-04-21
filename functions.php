@@ -156,4 +156,17 @@ function getUserFullNameAndId($ids) {
     return $users;
 }
 
+function findTutor($studentId) {
+    $query = "SELECT * FROM allocation";
+    $result = queryMysql($query);
+    while($row = $result->fetch_assoc()) {
+        $tutorId = $row['tutor_id'];
+        $studentIds = explode(",", $row['allocated_students']);
+        if(in_array($studentId, $studentIds)) {
+            return $tutorId;
+        }
+    }
+    return null;
+}
+
 ?>
