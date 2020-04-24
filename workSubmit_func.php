@@ -1,5 +1,5 @@
 <?php
-require './functions.php';
+require './activityManager.php';
 
 if (isset($_POST['upload']) && isset($_FILES['fileUpload'])) {
     if ($_FILES['fileUpload']['error'] > 0) {
@@ -14,6 +14,13 @@ if (isset($_POST['upload']) && isset($_FILES['fileUpload'])) {
             $query = "INSERT INTO file_upload(title,sender,receiver,file_path,description) VALUES('$title', '$sender', '$receiver', '$path', '$description')";
             if(queryMysql($query)) {
                 echo "Upload success";
+                if($_POST['role'] == 1) {
+                    recordActivity($sender, 6, "$receiver");
+                    // add redirect laater
+                } elseif($_POST['role'] == 2) {
+                    recordActivity($sender, 4);
+                    // add redirect laater
+                }
             }
         }
         

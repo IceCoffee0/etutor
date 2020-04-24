@@ -1,4 +1,8 @@
-<?php require 'functions.php';?>
+<?php 
+require 'functions.php';
+session_start();
+checkUser(3);
+?>
 <html>
     <div>
         <h1>Register Function</h1>
@@ -13,14 +17,23 @@
                     $query = "SELECT * FROM role";
                     $role = queryMysql($query);
                     while ($row = $role->fetch_assoc()) {
-                        if($row['role_id'] != 5) {
-                        ?>
-                        <option value='<?= $row['role_id']?>'> <?= $row['role_name']?> </option>
-                        <?php
+                        if($_SESSION['role'] == 3) {
+                            if($row['role_id'] != 3 && $row['role_id'] != 4 && $row['role_id'] != 5) {
+                                ?>
+                                    <option value='<?= $row['role_id']?>'> <?= $row['role_name']?> </option>
+                                <?php
+                            }
+                        } elseif($_SESSION['role_id' == 4]) {
+                            if($row['role_id'] != 4 && $row['role_id'] != 5) {
+                                ?>
+                                    <option value='<?= $row['role_id']?>'> <?= $row['role_name']?> </option>
+                                <?php
+                            }
                         }
                     };
                 ?>
             </select> <br>
+            <input type="hidden" name="user" value="<?= $_SESSION['uid']?>">
             <input type="submit" value="Submit">
         </form>
     </div>

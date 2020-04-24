@@ -81,17 +81,18 @@ function generateAndSendAccount($name, $email, $role) {
         $from = 'Ngo Manh Duy <duynmgch16457@fpt.edu.vn>';
         $to = '<' .  $email . '>';
         $subject = 'Your Loggin Credential';
-        $message = "Username: " . $username . "\n" . "Passowrd: " . $password;
+        $message = "Hello, your account has been created on the eTutor system, plaease use the following credential to log in.\n Username: " . $username . "\n" . "Passowrd: " . $password;
         $headers = 'From: ' . $from;
 
         if (!mail($to, $subject, $message, $headers))
         {
             echo "Error.";
+            return false;
         }
         else
         {
             echo "Email sent.";
-            header("Location: login_test.php");
+            return true;
         }
         
     } else {

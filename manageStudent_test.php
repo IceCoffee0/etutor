@@ -86,6 +86,7 @@ checkUser(3); // Level: Staff or higher
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
+                                                  <input type="hidden" name="user" value="<?= $_SESSION['uid']?>">
                                                   <input type="submit" name="reAllocate" value="Save" class="btn btn-primary">
                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 </div>

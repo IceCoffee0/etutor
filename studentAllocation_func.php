@@ -1,14 +1,18 @@
 <?php
-require './functions.php';
-//error_reporting(E_ERROR | E_PARSE);
+//require './functions.php';
+require './activityManager.php';
+error_reporting(E_ERROR | E_PARSE);
+$user = $_POST['user'];
 
 if(isset($_POST['allocate'])) {
     if(count($_POST['student']) > 0 && $_POST['student'] != null && isset($_POST['student'])) {
         $teacherId = $_POST['teacher'];
         $studentIdArr = $_POST['student'];
         $studentIds = implode(",", $studentIdArr);
+        $target = "$teacherId,$studentIds";
         //echo "Teacher ID: " . $teacherId . " Student IDs: " . $studentIds;
         allocateStudent($teacherId, $studentIds);
+        recordActivity($_POST['user'], 2, $target);
         header('Refresh: 1; URL=studentAllocation_test.php');
         echo "Redirecting ...";
     } else {
@@ -30,19 +34,30 @@ if(isset($_POST['reAllocate'])) {
             $students = explode(",", $row['allocated_students']);
             if(in_array($studentId, $students)) {
                 $teacherIdOld = $teacher;
-                unAllocateStudent($teacher, $studentId);
+                if($teacherIdOld != $teacherIdNew) {
+                    unAllocateStudent($teacher, $studentId);
+                }
             }
         }
-        if(allocateStudent($teacherIdNew, $studentId, $reAllocation = true, $teacherIdOld)) { 
-            $query1 = "SELECT allocated_students FROM allocation WHERE tutor_id = '$teacherIdOld'";
-            $query2 = "DELETE FROM allocation WHERE tutor_id = '$teacherIdOld'";
-            $result = queryMysql($query1);
-            if($result->fetch_array()[0] == "") {
-                queryMysql($query2);
+        if($teacherIdOld != $teacherIdNew) {
+            if(allocateStudent($teacherIdNew, $studentId, $reAllocation = true, $teacherIdOld)) {
+                $query1 = "SELECT allocated_students FROM allocation WHERE tutor_id = '$teacherIdOld'";
+                $query2 = "DELETE FROM allocation WHERE tutor_id = '$teacherIdOld'";
+                $result = queryMysql($query1);
+                if($result->fetch_array()[0] == "") {
+                    queryMysql($query2);
+                }
             }
+            $target = "$teacherIdOld,$teacherIdNew,$studentId";
+            recordActivity($user, 3, $target);
+            header('Refresh: 1; URL=manageStudent_test.php');
+            echo "Redirecting ...";
+        } else {
+            echo "<script>alert('Student already allocated to this teacher');</script>";
+            header('Refresh: 2; URL=manageStudent_test.php');
+            echo "Redirecting ...";
         }
-        header('Refresh: 1; URL=manageStudent_test.php');
-        echo "Redirecting ...";
+        
     }
 }
 

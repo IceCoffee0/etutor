@@ -2,7 +2,11 @@
 require './functions.php';
 session_start();
 checkUser(1);
-echo $_SESSION['uid'];
+if($_SESSION['role'] != 1 && $_SESSION['role'] != 2) {
+    echo "<script>alert('Restricted Area');</script>";
+    header('Refresh: 2; URL=index.php');
+    echo "Redirecting ...";
+}
 ?>
 <html>
 <head>
@@ -43,6 +47,7 @@ echo $_SESSION['uid'];
                 <input type="file" name="fileUpload" value=""> <br>
                 Description
                 <textarea name="description" form="uploadForm" placeholder="Enter description ..."></textarea>
+                <input type="hidden" name="role" value="<?= $_SESSION['role']?>">
                 <input type="submit" name="upload" value="Send">
             </form>
         <?php
@@ -79,6 +84,7 @@ echo $_SESSION['uid'];
                 <input type="file" name="fileUpload" value=""> <br>
                 Description
                 <textarea name="description" form="uploadForm" placeholder="Enter description ..."></textarea>
+                <input type="hidden" name="role" value="<?= $_SESSION['role']?>">
                 <input type="submit" name="upload" value="Send">
             </form>
             <?php

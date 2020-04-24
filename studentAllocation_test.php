@@ -67,6 +67,7 @@
             
         </div>
         <div class="modal-footer">
+            <input type="hidden" name="user" value="<?= $_SESSION['uid']?>">
             <input type="submit" name="allocate" value="Save" class="btn btn-primary">
         </div>
       </form>    
