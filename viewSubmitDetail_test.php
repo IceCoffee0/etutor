@@ -59,7 +59,7 @@ if(isset($_GET['smid'])) {
                 <label for="feedback">Feedback</label>
                 <textarea class="form-control" id="feedback" rows="3" name="feedback" form="viewSubmit" <?php if($role != 1) {echo "readonly";} ?> ><?= $row['feedback']?></textarea>
             </div>
-
+            <input type="hidden" name="user" value="<?= $userId?>">
             <button type="submit" name="saveSubmit" value="save" class="btn btn-primary">Save</button>
             <a class="btn btn-secondary" href="viewSubmission_test.php">Back</a>
         </form>

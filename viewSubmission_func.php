@@ -1,7 +1,8 @@
 <?php
-require './functions.php';
+require './activityManager.php';
 
 if(isset($_POST['saveSubmit'])) {
+    $user = $_POST['user'];
     $role = $_POST['role'];
     $smid = $_POST['smid'];
     if($role == 1) {
@@ -9,6 +10,9 @@ if(isset($_POST['saveSubmit'])) {
         $query = "UPDATE file_upload SET feedback = '$feedback' WHERE id = '$smid'";
         if(queryMysql($query)) {
             echo "success";
+            $query = "SELECT sender FROM file_upload WHERE id='$smid'";
+            $user = queryMysql($query)->fetch_array()[0];
+            recordActivity($user, 5, $target, $smid);
             header('Refresh: 1; URL=viewSubmission_test.php');
             echo "Redirecting ...";
         } else {
