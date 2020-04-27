@@ -1,9 +1,0 @@
-.setting {
-    list-style: none;
-}
-.setting:hover > .profile {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition: all 0.4s cubic-bezier(.52,.31,.22,.67);
-}
