@@ -1,3 +1,38 @@
-.mt-100 {
-    margin-top: 100px;
+.tx-color {
+    color: #e0d3d2 !important;
+}
+
+.text-color {
+    color: #cfcece !important;
+}
+
+.bg-color {
+    background-color: #302621 !important;
+}
+
+.clearfix {
+    content: "";
+    clear: both;
+}
+
+.action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mr-60 {
+    margin-right: 60px;
+}
+
+.close {
+    color: white;
+    display: block;
+    text-decoration: none;
+    i {
+        display: block;
+    }
+    :hover {
+        color: black;
+    }
 }
