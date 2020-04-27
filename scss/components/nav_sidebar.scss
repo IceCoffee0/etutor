@@ -1,0 +1,45 @@
+.nav-sidebar {
+    display: none;
+    color: #e0d3d2;
+    cursor: pointer;
+    font-size: 25px;
+    padding: 10px 5px;
+}
+
+@media (max-width: 1023px) {
+    .nav-sidebar {
+        display: block;
+        text-align: center;
+    }
+}
+
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    display: none;
+    z-index: 9;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.nav-input:checked ~ .nav-overlay {
+    display: block;
+    transition: fadeIn linear 0.2s;
+}
+
+.nav-input:checked ~ .sidebar-mobile {
+    transform: translateX(0);
+    opacity: 1;
+}

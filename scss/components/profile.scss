@@ -1,0 +1,39 @@
+.profile {
+    position: absolute;
+    top: 100%;
+    right: 4%;
+    margin: 0;
+    padding: 0;
+    z-index: 999;
+    background-color: #655351;
+    width: 150px;
+    height: 100px;
+    padding-left: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(50%);
+    transition: all 0.4s cubic-bezier(.52,.31,.22,.67);
+}
+
+.profile::before {
+    position: absolute;
+    top: -36%;
+    right: 0;
+    width: 100px;
+    height: 50px;
+    content: "";
+    display: block;
+}
+
+.profile__item {
+    list-style: none;
+    .profile__link {
+        display: block;
+        text-decoration: none;
+        color: #c9b7b4;
+        padding: 10px 0;
+        &:hover {
+            color: white !important;
+        }
+    }
+}

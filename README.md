@@ -1,3 +1,4 @@
+
 # eTutor
 WAMP Server, MySql, Php.
 
@@ -12,3 +13,5 @@ Neu chua co driver cho MySQL Java thi moi nguoi download o day: https://dev.mysq
 Cai dat driver bang cach tim thu muc Databases -> Drivers -> New Driver -> Add -> Tim den file  xxx-bin.jar -> bam OK.
 
 De test xem da ket noi duoc den DB chua, trong project co file test.php neu file do hien thi du lieu thi da thanh cong.
+
+
