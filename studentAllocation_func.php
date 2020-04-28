@@ -13,10 +13,10 @@ if(isset($_POST['allocate'])) {
         //echo "Teacher ID: " . $teacherId . " Student IDs: " . $studentIds;
         allocateStudent($teacherId, $studentIds);
         recordActivity($_POST['user'], 2, $target);
-        header('Refresh: 1; URL=studentAllocation_test.php');
+        header('Refresh: 1; URL=admin_account_student.php');
         echo "Redirecting ...";
     } else {
-        header('Refresh: 3; URL=studentAllocation_test.php');
+        header('Refresh: 3; URL=admin_account_student.php');
         echo "<script>alert('No Student Selected')</script>";
         echo "Redirecting ...";
     }
@@ -50,11 +50,11 @@ if(isset($_POST['reAllocate'])) {
             }
             $target = "$teacherIdOld,$teacherIdNew,$studentId";
             recordActivity($user, 3, $target);
-            header('Refresh: 1; URL=manageStudent_test.php');
+            header('Refresh: 1; URL=admin_account_student.php');
             echo "Redirecting ...";
         } else {
             echo "<script>alert('Student already allocated to this teacher');</script>";
-            header('Refresh: 2; URL=manageStudent_test.php');
+            header('Refresh: 2; URL=admin_account_student.php');
             echo "Redirecting ...";
         }
         

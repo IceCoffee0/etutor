@@ -1,0 +1,27 @@
+.status__item  {
+    display: flex;
+    margin-top: 5px;
+}
+
+.status__assigne {
+    background-color: var(--bg-color);
+    padding: 9px 30px;
+    flex: 4;
+    color: #ffffff;
+}
+
+.status__point {
+    background-color: var(--bg-color);
+    margin-left: 3px;
+    font-size: 30px;
+    flex: 1;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status__title {
+    font-weight: 700;
+    font-size: 16px;
+}

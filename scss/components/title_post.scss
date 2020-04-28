@@ -1,0 +1,17 @@
+.title-post {
+    display: flex;
+    background-color: var(--bg-color);
+    align-items: center;
+    padding-left: 30px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+.title-post__icon {
+    color: #dddbda;
+}
+
+.title-post__text {
+    color: #dddbda;
+    margin-left: 15px;
+    font-size: 16px;
+}

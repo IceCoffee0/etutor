@@ -65,23 +65,49 @@ function registerUser($fullname,$username, $password, $roleId, $email, $phone = 
 
 function checkUser($level) {
     if(!isset($_SESSION['role']) || $_SESSION['role'] < $level) {
-        header('Refresh: 2; URL=index.php');
+        header('Refresh: 2; URL=login_test.php');
         echo "<script>alert('Restricted Area')</script>";
         echo "Redirecting ...";
+        return false;
+    } else {
+        return true;
     }
 }
 
-function generateAndSendAccount($name, $email, $role) {
+function redirectUser($role) {
+    switch ($role):
+        case 1:
+            header("Refersh: 1; URL= tutor_homepage.php");
+            break;
+        case 2:
+            header("Refersh: 1; URL= student_homepage.php");
+            break;
+        case 3:
+            header("Refersh: 1; URL= admin_panel.php");
+            break;
+        case 4:
+            header("Refersh: 1; URL= admin_panel.php");
+            break;
+        case 5:
+            header("Refersh: 1; URL= admin_panel.php");
+            break;
+        default:
+            header("Location: index.php");
+            break;
+    endswitch;
+}
+
+function generateAndSendAccount($name, $email, $role, $phone = null) {
     $username = generateRandomString($name, 8);
     $password = passwordToToken(generateRandomString($name, 12));
     
-    $result = registerUser($name, $username, $password, $role, $email);
+    $result = registerUser($name, $username, $password, $role, $email, $phone);
     if($result) {
         
         $from = 'Ngo Manh Duy <duynmgch16457@fpt.edu.vn>';
         $to = '<' .  $email . '>';
         $subject = 'Your Loggin Credential';
-        $message = "Hello, your account has been created on the eTutor system, plaease use the following credential to log in.\n Username: " . $username . "\n" . "Passowrd: " . $password;
+        $message = "Hello, your account has been created on the eTutor system, plaease use the following credential to log in.\nUsername: " . $username . "\n" . "Passowrd: " . $password;
         $headers = 'From: ' . $from;
 
         if (!mail($to, $subject, $message, $headers))
@@ -168,6 +194,33 @@ function findTutor($studentId) {
         }
     }
     return null;
+}
+
+function getTutorName($studentId) {
+    $tutorId = findTutor($studentId);
+    if($tutorId != null) {
+        $tutorName = getUserFullNameAndId($tutorId);
+        return $tutorName[0];
+    } else {
+        return null;
+    }
+}
+
+function getTutorsStudent($tutorId) {
+    $query = "SELECT * FROM allocation";
+    $result = queryMysql($query);
+    $students = array();
+    while ($row = $result->fetch_assoc()) {
+        if($row['tutor_id'] == $tutorId) {
+            $studentIds = $row['allocated_students'];
+            $query2 = "SELECT * FROM users WHERE user_id IN($studentIds)";
+            $result2 = queryMysql($query2);
+            while ($row2 = $result2->fetch_assoc()) {
+                array_push($students, $row2);
+            }
+        }
+    }
+    return $students;
 }
 
 ?>

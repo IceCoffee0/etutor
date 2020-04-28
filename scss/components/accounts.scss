@@ -1,0 +1,19 @@
+.account__item {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    padding: 4px 30px;
+    color: #dddbda;
+}
+
+.account__func a{
+    color: #dddbda;
+    text-decoration: none;
+}
+
+.account__func a:first-child::after {
+    content: ".";
+    color: white;
+    margin-left: 5px;
+} 
