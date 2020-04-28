@@ -1,7 +1,7 @@
 <?php
 require './functions.php';
 
-function recordActivity($user ,$activity_type, $target = null, $additionalInfo = null) {
+function recordActivity($user ,$activity_type, $target = null, $additionalInfo = -1) {
     $current_time = time();
     $query = "INSERT INTO activity_log(user_id, time, activity_id, target, additional_info) VALUES($user, $current_time, $activity_type, '$target', '$additionalInfo')";
     if(!queryMysql($query)) {
@@ -14,8 +14,12 @@ function epochToTime($timeEpoch) {
     return date("d/m/Y H:i", $timeEpoch);
 }
 
-function getActivity_asUser($userId) {
-    $query = "SELECT * FROM activity_log WHERE user_id = '$userId'";
+function getActivity_asUser($userId, $limit = 0) {
+    if($limit > 0) {
+        $query = "SELECT * FROM activity_log WHERE  user_id = '$userId' ORDER BY id DESC LIMIT $limit";
+    } else {
+        $query = "SELECT * FROM activity_log WHERE user_id = '$userId'";
+    }
     $result = queryMysql($query);
     $activities = array();
     while($row = $result->fetch_assoc()) {
@@ -24,8 +28,12 @@ function getActivity_asUser($userId) {
     return $activities;
 }
 
-function getActivity_asTarget($targetId) {
-    $query = "SELECT * FROM activity_log WHERE target = '$targetId'";
+function getActivity_asTarget($targetId, $limit = 0) {
+    if($limit > 0) {
+        $query = "SELECT * FROM activity_log WHERE target = '$targetId' ORDER BY id DESC LIMIT $limit ";
+    } else {
+        $query = "SELECT * FROM activity_log WHERE target = '$targetId'";
+    }
     $result = queryMysql($query);
     $activities = array();
     while($row = $result->fetch_assoc()) {
@@ -93,23 +101,23 @@ function processActivityLog($row, $type, $manager = false) {
                 $text = "[$time][$user] $activity";
                 return $text;
             case '5':
-                if($manager === true) {
+                
                     $user = getUserFullNameAndId($row['user_id'])[0];
                     $activity = getActivityDetail($row['activity_id']);
                     $smid = $row['additional_info'];
                     $target = getUserFullNameAndId($row['target'])[0];
                     $text = "[$time][$user] $activity [Submittion ID: $smid][Author: $target]";
                     return $text;
-                }
+                
                 break;
             case '6':
-                if($manager === true) {
+                
                     $user = getUserFullNameAndId($row['user_id'])[0];
                     $activity = getActivityDetail($row['activity_id']);
                     $target = getUserFullNameAndId($row['target'])[0];
                     $text = "[$time][$user] $activity [Student: $target]";
                     return $text;
-                }
+                
                 break;
             default:
                 echo "Unrecognized activity";

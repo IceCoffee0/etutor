@@ -13,11 +13,11 @@ if(isset($_POST['saveSubmit'])) {
             $query = "SELECT sender FROM file_upload WHERE id='$smid'";
             $user = queryMysql($query)->fetch_array()[0];
             recordActivity($user, 5, $target, $smid);
-            header('Refresh: 1; URL=viewSubmission_test.php');
+            header('Refresh: 1; URL=student_assignment.php');
             echo "Redirecting ...";
         } else {
             echo "failed";
-            header('Refresh: 10; URL=viewSubmission_test.php');
+            header('Refresh: 10; URL=student_assignment.php');
             echo "Redirecting ...";
         }
     } elseif($role == 2) {
@@ -26,11 +26,11 @@ if(isset($_POST['saveSubmit'])) {
         $query = "UPDATE file_upload SET title = '$title', description = '$description' WHERE id = '$smid'";
         if(queryMysql($query)) {
             echo "success";
-            header('Refresh: 1; URL=viewSubmission_test.php');
+            header('Refresh: 1; URL=student_assignment.php');
             echo "Redirecting ...";
         } else {
             echo "failed";
-            header('Refresh: 10; URL=viewSubmission_test.php');
+            header('Refresh: 10; URL=student_assignment.php');
             echo "Redirecting ...";
         }
     }

@@ -1,0 +1,39 @@
+.active__list {
+    background-color: var(--bg-color);
+    margin-top: 5px;
+    padding: 30px;
+}
+.active__memmber {
+   display: flex;
+   color: #dddbda;
+   margin: 15px 0;
+}
+
+.active__text {
+    margin-left: 8px;
+    padding: 5px 0;
+}
+
+.active__img {
+    display: block;
+    border-radius: 50%;
+    img {
+        border-radius: 50%;
+        display: block;
+    }
+}
+
+.viewall {
+    background-color: var(--bg-color);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 10px;
+    margin-top: 5px;
+    a {
+        color: #dddbda;
+        text-decoration: none;
+        &:hover {
+            color: green;
+        }
+    }
+}
