@@ -5,7 +5,6 @@ checkUser(1);
 $userId = $_SESSION['uid'];
 $role = $_SESSION['role'];
 $tutorId = null;
-$smid = null;
 if(isset($_GET['smid'])) {
     $smid = $_GET['smid'];
 } else {
@@ -145,6 +144,7 @@ if(isset($_GET['smid'])) {
                     <form action="viewSubmission_func.php" method="post" id="viewSubmit">
                         <input type="hidden" name="role" value="<?= $role?>">
                         <input type="hidden" name="smid" value="<?= $smid?>">
+                        <input type="hidden" name="user" value="<?= $userId?>">
                         <div class="form-group">
                           <label for="inputTitle">Title</label>
                           <input type="text" class="form-control" name="title" id="inputTitle" value="<?= $row['title']?>" <?php if($role != 2) {echo "readonly";}?> >
@@ -175,7 +175,6 @@ if(isset($_GET['smid'])) {
                             <label for="feedback">Feedback</label>
                             <textarea class="form-control" id="feedback" rows="3" name="feedback" form="viewSubmit" <?php if($role != 1) {echo "readonly";} ?> ><?= $row['feedback']?></textarea>
                         </div>
-                        <input type="hidden" name="user" value="<?= $userId?>">
                         <button type="submit" name="saveSubmit" value="save" class="btn btn-primary">Save</button>
                         <a class="btn btn-secondary" href="student_assignment.php">Back</a>
                     </form>

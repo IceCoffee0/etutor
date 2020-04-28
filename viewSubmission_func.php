@@ -11,7 +11,7 @@ if(isset($_POST['saveSubmit'])) {
         if(queryMysql($query)) {
             echo "success";
             $query = "SELECT sender FROM file_upload WHERE id='$smid'";
-            $user = queryMysql($query)->fetch_array()[0];
+            $target = queryMysql($query)->fetch_array()[0];
             recordActivity($user, 5, $target, $smid);
             header('Refresh: 1; URL=student_assignment.php');
             echo "Redirecting ...";

@@ -168,7 +168,7 @@
                                     array_push($studentIds, $student['user_id']);
                                 }
                                 $studentIds = implode(",", $studentIds);
-                                $query = "SELECT * FROM activity_log WHERE user_id IN($studentIds) ORDER BY time DESC LIMIT 5";
+                                $query = "SELECT * FROM activity_log WHERE user_id IN($studentIds) ORDER BY time DESC LIMIT 3";
                                 $result = queryMysql($query);
                             ?>
                             <?php if(mysqli_num_rows($result) > 0):?>
