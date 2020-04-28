@@ -5,6 +5,8 @@ Project nay se duoc lam tren IDE Netbeans. Repo da duoc cap nhat lai giup moi ng
 
 New Import For Database: https://drive.google.com/open?id=1QJE4_WhGfHutXH3Te99PqGpfGxtkB0e
 
+- Delete olds database if already exist
+
 Sendmail program for localhost: https://drive.google.com/open?id=1a9uq4Q-SHsYxB6iUDr3biyjYbfqVyFtY
 
 - Extract to folder C:\
