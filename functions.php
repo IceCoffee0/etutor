@@ -74,28 +74,6 @@ function checkUser($level) {
     }
 }
 
-function redirectUser($role) {
-    switch ($role):
-        case 1:
-            header("Refersh: 1; URL= tutor_homepage.php");
-            break;
-        case 2:
-            header("Refersh: 1; URL= student_homepage.php");
-            break;
-        case 3:
-            header("Refersh: 1; URL= admin_panel.php");
-            break;
-        case 4:
-            header("Refersh: 1; URL= admin_panel.php");
-            break;
-        case 5:
-            header("Refersh: 1; URL= admin_panel.php");
-            break;
-        default:
-            header("Location: index.php");
-            break;
-    endswitch;
-}
 
 function generateAndSendAccount($name, $email, $role, $phone = null) {
     $username = generateRandomString($name, 8);

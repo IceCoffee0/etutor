@@ -29,9 +29,19 @@
                     $_SESSION[ 'password' ] = $pass;
                     $role = $_SESSION['role'] = mysqli_fetch_array(queryMysql ( "SELECT role_id FROM users WHERE username = '$user' " ))[0];
                     echo "<script>console.log('$role');</script>";
+                    if($role == 1) {
+                        header('Refresh: 1; URL=tutor_homepage.php');
+                    } elseif($role == 2) {
+                        header('Refresh: 1; URL=student_homepage.php');
+                    } elseif($role == 3) {
+                        header('Refresh: 1; URL=admin_panel.php');
+                    } elseif($role == 4) {
+                        header('Refresh: 1; URL=admin_panel.php');
+                    } elseif($role == 5) {
+                        header('Refresh: 1; URL=admin_panel.php');
+                    }
                     echo "<script>alert('Log In Success');</script>";
                     echo "Redirecting ..";
-                    redirectUser($role);
                 }
             }
         } else {
