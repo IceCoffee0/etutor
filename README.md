@@ -1,7 +1,7 @@
 # eTutor
 WAMP Server, MySql, Php.
 
-Project nay se duoc lam tren IDE Netbeans. Repo da duoc cap nhat lai giup moi nguoi co the open project nay tren netbeans.
+Group 6: eTutor System
 
 New Import For Database: https://drive.google.com/file/d/1QJE4_WhGfHutXH3Te99PqGpfGxtkB0e_/view?usp=sharing
 
@@ -11,15 +11,10 @@ Sendmail program for localhost: https://drive.google.com/open?id=1a9uq4Q-SHsYxB6
 
 - Extract to folder C:\
 
-- edit php.ini in WAMP, got to [mail function] in php.ini and edit to make sure the the content match this php.ini [mail function]
+- edit php.ini in WAMP, go to [mail function] in php.ini and edit to make sure the the content match this php.ini [mail function]
 
 - php.ini file: https://drive.google.com/open?id=1HDS6hZyiC3-jBzurvgg0id47zSybov1F
 
 System account: https://drive.google.com/open?id=19erv3T264bEgM4RxDbaTitj4QAh2IyQ3
 
-Khi da open duoc project nay tren netbeans, de set-up MySQL connection thi moi nguoi tim tab Services tren netbeans -> Databases -> New Connection -> Nhap thong tin database cua minh vao
-
-Neu chua co driver cho MySQL Java thi moi nguoi download o day: https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.48.zip. 
-
-Cai dat driver bang cach tim thu muc Databases -> Drivers -> New Driver -> Add -> Tim den file  xxx-bin.jar -> bam OK.
 
