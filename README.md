@@ -3,7 +3,7 @@ WAMP Server, MySql, Php.
 
 Project nay se duoc lam tren IDE Netbeans. Repo da duoc cap nhat lai giup moi nguoi co the open project nay tren netbeans.
 
-New Import For Database: https://drive.google.com/open?id=1QJE4_WhGfHutXH3Te99PqGpfGxtkB0e
+New Import For Database: https://drive.google.com/open?id=1QJE4_WhGfHutXH3Te99PqGpfGxtkB0e_
 
 - Delete olds database if already exist
 
