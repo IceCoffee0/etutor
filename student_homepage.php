@@ -246,7 +246,7 @@
                                 </a>
                                 <p class="title-post__text">Related activities</p>
                             </div>
-                            <?php $relatedActivities = getActivity_asTarget($userId, 5) ?>
+                            <?php $relatedActivities = getActivity_asTarget($userId, 3) ?>
                             <?php if(count($relatedActivities) > 0): ?>
                                 <?php foreach ($relatedActivities as $activity):?>
                                 <div class="notification__item">

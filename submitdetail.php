@@ -147,7 +147,7 @@ if(isset($_GET['smid'])) {
                         <input type="hidden" name="user" value="<?= $userId?>">
                         <div class="form-group">
                           <label for="inputTitle">Title</label>
-                          <input type="text" class="form-control" name="title" id="inputTitle" value="<?= $row['title']?>" <?php if($role != 2) {echo "readonly";}?> >
+                          <input type="text" class="form-control" name="title" id="inputTitle" value="<?= $row['title']?>" <?php if($role != 2) {echo "readonly";}?> required>
                         </div>
 
                         <div class="form-group">
@@ -158,7 +158,7 @@ if(isset($_GET['smid'])) {
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="file">File</label>
-                            <input type="text" class="form-control" id="file" placeholder="<?= str_replace("data/", "", $row['file_path']); ?>" disabled>
+                            <input type="text" class="form-control" id="file" placeholder="<?= str_replace("data/", "", $row['file_path']); ?>" disabled required>
                             <input type="hidden" name="filepath" value="<?= $row['file_path']?>">
                           </div>
                           <div class="form-group col-md-6">
@@ -169,7 +169,7 @@ if(isset($_GET['smid'])) {
 
                         <div class="form-group">
                             <label for="desc">Description</label>
-                            <textarea class="form-control" id="desc" rows="3" name="desc" form="viewSubmit" <?php if($role != 2) {echo "readonly";}?> ><?= $row['description']?></textarea>
+                            <textarea class="form-control" id="desc" rows="3" name="desc" form="viewSubmit" <?php if($role != 2) {echo "readonly";}?> required><?= $row['description']?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="feedback">Feedback</label>

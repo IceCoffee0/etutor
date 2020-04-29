@@ -261,19 +261,19 @@
                 ?>
                 <div class="form-group">
                     <label for="inputTitle">Title</label>
-                    <input type="text" class="form-control" name="title" id="inputTitle" >
+                    <input type="text" class="form-control" required minlength="10" name="title" id="inputTitle" >
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="file">File</label>
-                      <input type="file" name="fileUpload" value="">
+                      <input type="file" required name="fileUpload" value="" >
                     </div>
                 </div>
 
                 <div class="form-group">
                       <label for="desc">Description</label>
-                      <textarea class="form-control" id="desc" rows="3" name="description" form="uploadForm"></textarea>
+                      <textarea class="form-control" id="desc" rows="3" required minlength="10" name="description" form="uploadForm" ></textarea>
                 </div>
                             
             </div>
@@ -322,19 +322,19 @@
                         
                 <div class="form-group">
                     <label for="inputTitle">Title</label>
-                    <input type="text" class="form-control" name="title" id="inputTitle" >
+                    <input type="text" class="form-control" required minlength="10" name="title" id="inputTitle" >
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="file">File</label>
-                      <input type="file" name="fileUpload" value="">
+                      <input type="file" required name="fileUpload" value="">
                     </div>
                 </div>
 
                 <div class="form-group">
                       <label for="desc">Description</label>
-                      <textarea class="form-control" id="desc" rows="3" name="description" form="uploadForm"></textarea>
+                      <textarea class="form-control" id="desc" rows="3" required minlength="10" name="description" form="uploadForm"></textarea>
                 </div>
                             
             </div>

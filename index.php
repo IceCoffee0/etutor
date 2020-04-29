@@ -254,11 +254,11 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label for="inputUsername">Username</label>
-                    <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Enter username" required>
+                    <input type="text" class="form-control" id="inputUsername" required name="username" placeholder="Enter username" >
                   </div>
                   <div class="form-group">
                     <label for="inputPassowrd">Password</label>
-                    <input type="password" class="form-control" id="inputPassowrd" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control" id="inputPassowrd" required name="password" placeholder="Password" >
                   </div>
                 </div>
                 <div class="modal-footer">
