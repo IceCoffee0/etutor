@@ -15,6 +15,8 @@ Sendmail program for localhost: https://drive.google.com/open?id=1a9uq4Q-SHsYxB6
 
 - php.ini file: https://drive.google.com/open?id=1HDS6hZyiC3-jBzurvgg0id47zSybov1F
 
+- After that restart WAMP so the changes can be applied
+
 System account: https://drive.google.com/open?id=19erv3T264bEgM4RxDbaTitj4QAh2IyQ3
 
 
