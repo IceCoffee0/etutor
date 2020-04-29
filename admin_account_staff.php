@@ -233,7 +233,7 @@
                                                 background: #9c918a;
                                                 height: 30px;
                                                 border-radius: 5px;
-                                                margin-left: 92px;" type="text" placeholder="" required="" id="" name="fullname" />
+                                                margin-left: 92px;" type="text" placeholder="" required id="" minlength="8" name="fullname" />
                                     </p>
                                 </div>
                                 <div>
@@ -247,7 +247,7 @@
                                                 background: #9c918a;
                                                 height: 30px;
                                                 border-radius: 5px;
-                                                margin-left: 14px;" type="text" placeholder="" required="" id="" name="phone"/>
+                                                margin-left: 14px;" type="number" placeholder="" required id="" minlength="10" name="phone" />
                             </p>
                                     </p>
                                 </div>
@@ -262,12 +262,12 @@
                                                 background: #9c918a;
                                                 height: 30px;
                                                 border-radius: 5px;
-                                                margin-left: 145px;" type="text" placeholder="" required="" id="" name="email"/>
+                                                margin-left: 145px;" type="email" placeholder="" required id="" minlength="8" name="email" />
                             </p>
                                     </p>
                                 </div>
                                 <div>
-                                    <input style="
+                                    <a href="admin_account_staff.php"><input style="
                                     background: #3f3731;
                                     width: 100px;
                                     height: 40px;
@@ -276,7 +276,7 @@
                                     margin: 30px 60px 6px 205px;
                                     color: #FFFFFF;
                                     font-size: 14px;
-                                    cursor: pointer;" type="button" value="Cancel" />
+                                    cursor: pointer;" type="button" value="Cancel" /></a>
                                     <input style="background: #3f3731;
                                     width: 100px;
                                     height: 40px;
@@ -339,7 +339,7 @@
                                                     background: #9c918a;
                                                     height: 30px;
                                                     border-radius: 5px;
-                                                    margin-left: 92px;" type="text" placeholder="" required="" id="" name="fullname" value="<?= $row['fullname']?>"/>
+                                                    margin-left: 92px;" type="text" placeholder="" required id="" minlength="8" name="fullname" value="<?= $row['fullname']?>"/>
                                         </p>
                                     </div>
                                     <div>
@@ -353,7 +353,7 @@
                                                     background: #9c918a;
                                                     height: 30px;
                                                     border-radius: 5px;
-                                                    margin-left: 14px;" type="text" placeholder="" required="" id="" name="phone" value="<?= $row['phone']?>"/>
+                                                    margin-left: 14px;" type="number" placeholder="" required id="" minlength="10" name="phone" value="<?= $row['phone']?>"/>
                                         </p>
                                         </p>
                                     </div>
@@ -368,12 +368,12 @@
                                                     background: #9c918a;
                                                     height: 30px;
                                                     border-radius: 5px;
-                                                    margin-left: 145px;" type="text" placeholder="" required="" id="" name="email" value="<?= $row['email']?>"/>
+                                                    margin-left: 145px;" type="email" placeholder="" required id="" minlength="8" name="email" value="<?= $row['email']?>"/>
                                         </p>
                                         </p>
                                     </div>
                                     <div>
-                                        <input style="
+                                        <a href="admin_account_staff.php"><input style="
                                         background: #3f3731;
                                         width: 100px;
                                         height: 40px;
@@ -382,7 +382,7 @@
                                         margin: 30px 60px 6px 205px;
                                         color: #FFFFFF;
                                         font-size: 14px;
-                                        cursor: pointer;" type="button" value="Cancel" />
+                                        cursor: pointer;" type="button" value="Cancel" /></a>
                                         <input style="background: #3f3731;
                                         width: 100px;
                                         height: 40px;
