@@ -7,7 +7,7 @@ New Import For Database: https://drive.google.com/file/d/1QJE4_WhGfHutXH3Te99PqG
 
 - Delete olds database if already exist
 
-Sendmail program for localhost: https://drive.google.com/open?id=1a9uq4Q-SHsYxB6iUDr3biyjYbfqVyFtY
+Sendmail program used for system: https://drive.google.com/open?id=1a9uq4Q-SHsYxB6iUDr3biyjYbfqVyFtY
 
 - Extract to folder C:\
 
@@ -16,6 +16,8 @@ Sendmail program for localhost: https://drive.google.com/open?id=1a9uq4Q-SHsYxB6
 - php.ini file: https://drive.google.com/open?id=1HDS6hZyiC3-jBzurvgg0id47zSybov1F
 
 - After that restart WAMP so the changes can be applied
+
+- Go to the sendmail folder and change the sendmail.exe compatibility property to Window XP SP3
 
 System account: https://drive.google.com/open?id=19erv3T264bEgM4RxDbaTitj4QAh2IyQ3
 
