@@ -63,9 +63,23 @@ function registerUser($fullname,$username, $password, $roleId, $email, $phone = 
     }
 }
 
-function checkUser($level) {
+function validateUser($level) {
     if(!isset($_SESSION['role']) || $_SESSION['role'] < $level) {
-        header('Refresh: 2; URL=login_test.php');
+        if(!isset($_SESSION['role'])) {
+            header("Refresh: 2; URL: index.php");
+        } else {
+            if($_SESSION['role'] == 1) {
+                header('Refresh: 1; URL=tutor_homepage.php');
+            } elseif($_SESSION['role'] == 2) {
+                header('Refresh: 1; URL=student_homepage.php');
+            } elseif($_SESSION['role'] == 3) {
+                header('Refresh: 1; URL=admin_panel.php');
+            } elseif($_SESSION['role'] == 4) {
+                header('Refresh: 1; URL=admin_panel.php');
+            } elseif($_SESSION['role'] == 5) {
+                header('Refresh: 1; URL=admin_panel.php');
+            }
+        }
         echo "<script>alert('Restricted Area')</script>";
         echo "Redirecting ...";
         return false;

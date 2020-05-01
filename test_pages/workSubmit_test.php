@@ -1,7 +1,7 @@
 <?php
 require './functions.php';
 session_start();
-checkUser(1);
+validateUser(1);
 if($_SESSION['role'] != 1 && $_SESSION['role'] != 2) {
     echo "<script>alert('Restricted Area');</script>";
     header('Refresh: 2; URL=index.php');
