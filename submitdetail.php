@@ -97,7 +97,7 @@ if(isset($_GET['smid'])) {
                         <a href="" class="profile__link">
                             
                         </a>
-                        <a href="" class="profile__link">
+                        <a href="logout_func.php" class="profile__link">
                             Logout
                         </a>
                     </li>
