@@ -1,7 +1,7 @@
 <?php 
 require 'functions.php';
 session_start();
-checkUser(3);
+validateUser(3);
 ?>
 <html>
     <div>

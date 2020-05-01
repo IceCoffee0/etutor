@@ -1,7 +1,7 @@
 <?php 
     require './activityManager.php';
     session_start();
-    $authorized = checkUser(2);
+    $authorized = validateUser(2);
     
     if($authorized == true) {
         $page = "tutors_document.php";

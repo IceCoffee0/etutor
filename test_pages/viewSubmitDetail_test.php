@@ -1,7 +1,7 @@
 <?php
 require './functions.php';
 session_start();
-checkUser(1);
+validateUser(1);
 $userId = $_SESSION['uid'];
 $role = $_SESSION['role'];
 $tutorId = null;

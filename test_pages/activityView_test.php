@@ -1,7 +1,7 @@
 <?php
 require './activityManager.php';
 session_start();
-checkUser(4);
+validateUser(4);
 var_dump(getAllActivity());
 ?>
 

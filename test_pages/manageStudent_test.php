@@ -1,7 +1,7 @@
 <?php
 require './functions.php';
 session_start();
-checkUser(3); // Level: Staff or higher
+validateUser(3); // Level: Staff or higher
 ?>
 <head>
     <title>Manage Students</title>

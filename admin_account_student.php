@@ -1,7 +1,7 @@
 <?php 
     require './activityManager.php';
     session_start();
-    $authorized = checkUser(3);
+    $authorized = validateUser(3);
     $thisPage = "admin_account_student.php";
     if($authorized == true) {$userRole = $_SESSION['role'];}
     

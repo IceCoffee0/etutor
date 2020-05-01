@@ -1,7 +1,7 @@
 <?php
     require './functions.php';
     session_start();
-    checkUser(3); // Level: Staff
+    validateUser(3); // Level: Staff
 ?>
 
 <head>

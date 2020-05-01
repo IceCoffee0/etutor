@@ -1,7 +1,7 @@
 <?php 
     require './activityManager.php';
     session_start();
-    $authorized = checkUser(1);
+    $authorized = validateUser(1);
     if($authorized == true) {$roleId = $_SESSION['role'];}
     if(isset($_GET['studentId'])) {
         $userId = $_GET['studentId'];
