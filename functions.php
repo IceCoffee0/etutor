@@ -66,7 +66,7 @@ function registerUser($fullname,$username, $password, $roleId, $email, $phone = 
 function validateUser($level) {
     if(!isset($_SESSION['role']) || $_SESSION['role'] < $level) {
         if(!isset($_SESSION['role'])) {
-            header("Refresh: 2; URL: index.php");
+            header("Refresh: 2; URL=index.php");
         } else {
             if($_SESSION['role'] == 1) {
                 header('Refresh: 1; URL=tutor_homepage.php');
