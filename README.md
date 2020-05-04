@@ -3,7 +3,7 @@ WAMP Server, MySql, Php.
 
 Group 6: eTutor System
 
-New Import For Database: https://drive.google.com/file/d/1QJE4_WhGfHutXH3Te99PqGpfGxtkB0e_/view?usp=sharing
+New Import For Database: https://drive.google.com/file/d/1JX1uAeNfx2tX1sL6qnolGL3zlXDeXVpw/view?usp=sharing
 
 - Delete olds database if already exist
 
